@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.node {
+  @apply bg-purple-50 flex flex-col gap-2 justify-center items-center w-[200px] border-4 border-purple-200 rounded-md px-5 py-2;
+}
+
+.nodeTitle {
+  @apply text-xl font-semibold text-purple-600;
+}
+.childComponentWrapper label {
+  @apply my-2 border-2 border-purple-200 outline-purple-400 flex flex-col items-start pl-2 bg-white rounded-lg;
+}
+
+.childComponentWrapper select {
+  @apply border-2 border-purple-300 rounded-md my-2 outline-none;
+}
+
+.childComponentWrapper textarea {
+  @apply border-none outline-none rounded-md my-1 bg-transparent text-left w-40 resize-none px-1;
+}
+
+.inputTitle {
+  @apply text-sm font-semibold text-violet-600;
+}
