@@ -1,8 +1,8 @@
 import React from "react";
-import axios from "axios"; // Import axios
+import axios from "axios";
 import { useStore } from "./store";
-import { toast, ToastContainer } from "react-toastify"; // Import Toastify
-import "react-toastify/dist/ReactToastify.css"; // Import CSS for Toastify
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SubmitButton = () => {
   const { nodes, edges } = useStore((state) => ({
@@ -11,7 +11,6 @@ const SubmitButton = () => {
   }));
 
   const handleSubmit = async () => {
-    console.log(nodes, edges);
     const pipeline = { nodes, edges };
 
     try {

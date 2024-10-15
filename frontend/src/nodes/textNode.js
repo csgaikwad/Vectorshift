@@ -1,12 +1,13 @@
 // textNode.js
 
-import React, { useEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import BaseNode from "../components/BaseNode";
-import { Position } from "reactflow";
+import { Position, useUpdateNodeInternals } from "reactflow";
 import ResizingTextarea from "../components/ResizingTextArea";
 import updateHandles from "../utils/updateHandles";
 
 export const TextNode = ({ id, data }) => {
+  const updateNodeInternals = useUpdateNodeInternals();
   const [currText, setCurrText] = useState(data?.text || "{{input}}");
   const [handles, setHandles] = useState([
     { id: `${id}-output`, type: "source", position: Position.Right },
@@ -17,14 +18,14 @@ export const TextNode = ({ id, data }) => {
     setCurrText(value);
   };
 
-  // Initial handle update for default text
-   useEffect(() => {
-        const newHandles = updateHandles(currText, id);
-        setHandles(newHandles);
-    }, [currText, id]);
+  useLayoutEffect(() => {
+    const newHandles = updateHandles(currText, id);
+    setHandles(newHandles);
+    updateNodeInternals(id);
+  }, [currText, id, updateNodeInternals]);
 
   return (
-    <BaseNode label="Text" handles={handles}>
+    <BaseNode key={id} label="Text" handles={handles}>
       <ResizingTextarea
         value={currText}
         onChange={handleTextChange}

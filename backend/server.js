@@ -37,7 +37,7 @@ const isDAG = (edges) => {
     }
   }
 
-  return visitedCount === Object.keys(indegree).length; // If all nodes were visited
+  return visitedCount === Object.keys(indegree).length;
 };
 
 // GET endpoint at '/'
@@ -47,7 +47,6 @@ app.get("/", (req, res) => {
 
 // POST endpoint at '/pipelines/parse'
 app.post("/pipelines/parse", (req, res) => {
-  console.log(req.body);
   const { nodes, edges } = req.body; // Destructure nodes and edges
   const numNodes = nodes.length;
   const numEdges = edges.length;
